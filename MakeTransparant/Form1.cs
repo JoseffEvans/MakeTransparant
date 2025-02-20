@@ -62,7 +62,6 @@ namespace MakeTransparent {
                 InputPngError.Text = validation.ErrorMessage;
                 return false;
             }
-
         }
 
         bool ValidateOutputPng() {
@@ -97,10 +96,10 @@ namespace MakeTransparent {
             try {
                 using var bitmap = new Bitmap(InputPng.Text);
                 for (var y = 0; y < bitmap.Height; y++) for (var x = 0; x < bitmap.Width; x++) {
-                        var pixel = bitmap.GetPixel(x, y);
-                        if (IsWhite(pixel))
-                            bitmap.SetPixel(x, y, Transparant);
-                    }
+                    var pixel = bitmap.GetPixel(x, y);
+                    if (IsWhite(pixel))
+                        bitmap.SetPixel(x, y, Transparant);
+                }
                 bitmap.Save(OutputPngPath.Text, ImageFormat.Png);
                 Success.Visible = true;
                 InputPng.Text = string.Empty;
